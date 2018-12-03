@@ -31,4 +31,11 @@ router.post('/forms-:codeForms(\\d+)', (req, res) => {
   res.json({ resultat: `Code : ${req.params.codeForms}, Level : ${req.query.level}, Body-username: ${req.body.username}` });
 });
 
+router.get('/superMiddleware', (req, res, next) => {
+  console.log("Hello middleware");
+  next();
+}, (req, res, next) => {
+    res.send('hello world');
+});
+
 module.exports = router;
